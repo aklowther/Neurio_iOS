@@ -1,0 +1,10 @@
+/DerivedData/**
+*.xcbkptlist
+*.xcuserstate
+*.xccheckout
+*.xcuserdatad
+xcuserdata/
+
+Pods/
+Podfile.lock
+NeurioSecrets.swift
