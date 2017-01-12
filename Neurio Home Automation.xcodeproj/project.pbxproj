@@ -15,7 +15,8 @@
 		DD00A8681E23D10C00BC4A4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD00A8661E23D10C00BC4A4B /* LaunchScreen.storyboard */; };
 		DD4F52941E25898400CA9C8C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F52931E25898400CA9C8C /* AuthManager.swift */; };
 		DD9445AA1E270F7E0088F763 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9445A91E270F7E0088F763 /* HomeViewController.swift */; };
-		DD969C601E27D4750029C5E3 /* NeurioSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD969C5F1E27D4750029C5E3 /* NeurioSecrets.swift */; };
+		DD969C601E27D4750029C5E3 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */; };
+		DD969C621E27DE090029C5E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD969C611E27DE090029C5E3 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +32,8 @@
 		DD4F52931E25898400CA9C8C /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		DD9445A91E270F7E0088F763 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD969C5B1E27D1610029C5E3 /* Neurio Home Automation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Neurio Home Automation-Bridging-Header.h"; sourceTree = "<group>"; };
-		DD969C5F1E27D4750029C5E3 /* NeurioSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeurioSecrets.swift; sourceTree = "<group>"; };
+		DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
+		DD969C611E27DE090029C5E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		ECD25E5BD014B1E93B7DAA70 /* Pods-Neurio Home Automation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neurio Home Automation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD969C621E27DE090029C5E3 /* Security.framework in Frameworks */,
 				BA00FA1BA14F62742DC19444 /* Pods_Neurio_Home_Automation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +62,7 @@
 		AAE9B842C7E0727865C99D8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD969C611E27DE090029C5E3 /* Security.framework */,
 				73F1040388F18E6CEF801DA1 /* Pods_Neurio_Home_Automation.framework */,
 			);
 			name = Frameworks;
@@ -89,7 +93,7 @@
 				DD00A85F1E23D10C00BC4A4B /* NativeLoginViewController.swift */,
 				DD9445A91E270F7E0088F763 /* HomeViewController.swift */,
 				DD4F52931E25898400CA9C8C /* AuthManager.swift */,
-				DD969C5F1E27D4750029C5E3 /* NeurioSecrets.swift */,
+				DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */,
 				DD00A8611E23D10C00BC4A4B /* Main.storyboard */,
 				DD00A8641E23D10C00BC4A4B /* Assets.xcassets */,
 				DD00A8661E23D10C00BC4A4B /* LaunchScreen.storyboard */,
@@ -226,7 +230,7 @@
 			files = (
 				DD00A8601E23D10C00BC4A4B /* NativeLoginViewController.swift in Sources */,
 				DD4F52941E25898400CA9C8C /* AuthManager.swift in Sources */,
-				DD969C601E27D4750029C5E3 /* NeurioSecrets.swift in Sources */,
+				DD969C601E27D4750029C5E3 /* AppSecrets.swift in Sources */,
 				DD00A85E1E23D10C00BC4A4B /* AppDelegate.swift in Sources */,
 				DD9445AA1E270F7E0088F763 /* HomeViewController.swift in Sources */,
 			);

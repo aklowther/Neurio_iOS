@@ -49,9 +49,9 @@ class NativeLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func submitLogin() -> Void {
-        let authManager = AuthManager()
-        let validLogin = authManager.NeurioLoginWithCredentials(username: usernameTextField.text!, password: passwordTextField.text!)
-        debugPrint(validLogin)
+        let authManager = AuthManager.sharedInstance
+//        let validLogin = authManager.NeurioLoginWithCredentials(username: usernameTextField.text!, password: passwordTextField.text!)
+//        debugPrint(validLogin)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

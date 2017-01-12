@@ -9,6 +9,7 @@ use_frameworks!
 #pod '1PasswordExtension'
 pod 'Alamofire'
 pod 'SwiftyJSON'
+pod 'Strongbox'
 end
 
 post_install do |installer|

@@ -7,4 +7,4 @@ xcuserdata/
 
 Pods/
 Podfile.lock
-NeurioSecrets.swift
+AppSecrets.swift

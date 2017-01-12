@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SafariServices
 
-class HomeViewController: UIViewController, SFSafariViewControllerDelegate
+class HomeViewController: UIViewController, SFSafariViewControllerDelegate, AuthManagerProtocol
 {
     var webView:SFSafariViewController!
     let authManager = AuthManager.sharedInstance
@@ -23,6 +23,8 @@ class HomeViewController: UIViewController, SFSafariViewControllerDelegate
         {
             webView = SFSafariViewController(url: neurioURL, entersReaderIfAvailable: false)
             webView.delegate = self
+            
+            authManager.subscribeToListener(listener: self)
         }
     }
     
@@ -30,10 +32,18 @@ class HomeViewController: UIViewController, SFSafariViewControllerDelegate
     {
         super.viewDidAppear(animated)
         
-        self.present(webView, animated: true, completion: nil)
+        if !authManager.hasValidToken()
+        {
+            self.present(webView, animated: true, completion: nil)
+        }
     }
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         dismiss(animated: true)
+    }
+    
+    //MARK: AuthManagerProtocol
+    func handleURL(url: URL) {
+        dismiss(animated: true, completion: nil)
     }
 }
