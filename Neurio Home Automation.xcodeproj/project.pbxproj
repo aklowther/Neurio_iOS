@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA00FA1BA14F62742DC19444 /* Pods_Neurio_Home_Automation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F1040388F18E6CEF801DA1 /* Pods_Neurio_Home_Automation.framework */; };
+		67EB83960C9AEC0A78E87CFA /* Pods_Neurio_Home_Automation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9996B87BCCAAC006FF30147F /* Pods_Neurio_Home_Automation.framework */; };
 		DD00A85E1E23D10C00BC4A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00A85D1E23D10C00BC4A4B /* AppDelegate.swift */; };
 		DD00A8601E23D10C00BC4A4B /* NativeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00A85F1E23D10C00BC4A4B /* NativeLoginViewController.swift */; };
 		DD00A8631E23D10C00BC4A4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD00A8611E23D10C00BC4A4B /* Main.storyboard */; };
 		DD00A8651E23D10C00BC4A4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD00A8641E23D10C00BC4A4B /* Assets.xcassets */; };
 		DD00A8681E23D10C00BC4A4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD00A8661E23D10C00BC4A4B /* LaunchScreen.storyboard */; };
-		DD4F52941E25898400CA9C8C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F52931E25898400CA9C8C /* AuthManager.swift */; };
+		DD4F52941E25898400CA9C8C /* NeurioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F52931E25898400CA9C8C /* NeurioManager.swift */; };
 		DD9445AA1E270F7E0088F763 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9445A91E270F7E0088F763 /* HomeViewController.swift */; };
 		DD969C601E27D4750029C5E3 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */; };
 		DD969C621E27DE090029C5E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD969C611E27DE090029C5E3 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		45DE17F0AFD425F2127F1F2B /* Pods-Neurio Home Automation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neurio Home Automation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation.release.xcconfig"; sourceTree = "<group>"; };
-		73F1040388F18E6CEF801DA1 /* Pods_Neurio_Home_Automation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Neurio_Home_Automation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		009E1B060435DD9E6970CB0A /* Pods-Neurio Home Automation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neurio Home Automation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation.release.xcconfig"; sourceTree = "<group>"; };
+		036BF66C8F68BA0250052E0C /* Pods-Neurio Home Automation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neurio Home Automation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation.debug.xcconfig"; sourceTree = "<group>"; };
+		9996B87BCCAAC006FF30147F /* Pods_Neurio_Home_Automation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Neurio_Home_Automation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD00A85A1E23D10C00BC4A4B /* Neurio Home Automation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Neurio Home Automation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD00A85D1E23D10C00BC4A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD00A85F1E23D10C00BC4A4B /* NativeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeLoginViewController.swift; sourceTree = "<group>"; };
@@ -29,12 +30,11 @@
 		DD00A8641E23D10C00BC4A4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD00A8671E23D10C00BC4A4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD00A8691E23D10C00BC4A4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD4F52931E25898400CA9C8C /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		DD4F52931E25898400CA9C8C /* NeurioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeurioManager.swift; sourceTree = "<group>"; };
 		DD9445A91E270F7E0088F763 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DD969C5B1E27D1610029C5E3 /* Neurio Home Automation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Neurio Home Automation-Bridging-Header.h"; sourceTree = "<group>"; };
 		DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		DD969C611E27DE090029C5E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		ECD25E5BD014B1E93B7DAA70 /* Pods-Neurio Home Automation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neurio Home Automation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,18 +43,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD969C621E27DE090029C5E3 /* Security.framework in Frameworks */,
-				BA00FA1BA14F62742DC19444 /* Pods_Neurio_Home_Automation.framework in Frameworks */,
+				67EB83960C9AEC0A78E87CFA /* Pods_Neurio_Home_Automation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F5A1DE8F9E89921A60F5483 /* Pods */ = {
+		145ADFF822DCB954B7409216 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ECD25E5BD014B1E93B7DAA70 /* Pods-Neurio Home Automation.debug.xcconfig */,
-				45DE17F0AFD425F2127F1F2B /* Pods-Neurio Home Automation.release.xcconfig */,
+				036BF66C8F68BA0250052E0C /* Pods-Neurio Home Automation.debug.xcconfig */,
+				009E1B060435DD9E6970CB0A /* Pods-Neurio Home Automation.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				DD969C611E27DE090029C5E3 /* Security.framework */,
-				73F1040388F18E6CEF801DA1 /* Pods_Neurio_Home_Automation.framework */,
+				9996B87BCCAAC006FF30147F /* Pods_Neurio_Home_Automation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -73,8 +73,8 @@
 			children = (
 				DD00A85C1E23D10C00BC4A4B /* Neurio Home Automation */,
 				DD00A85B1E23D10C00BC4A4B /* Products */,
-				5F5A1DE8F9E89921A60F5483 /* Pods */,
 				AAE9B842C7E0727865C99D8D /* Frameworks */,
+				145ADFF822DCB954B7409216 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,7 +92,7 @@
 				DD00A85D1E23D10C00BC4A4B /* AppDelegate.swift */,
 				DD00A85F1E23D10C00BC4A4B /* NativeLoginViewController.swift */,
 				DD9445A91E270F7E0088F763 /* HomeViewController.swift */,
-				DD4F52931E25898400CA9C8C /* AuthManager.swift */,
+				DD4F52931E25898400CA9C8C /* NeurioManager.swift */,
 				DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */,
 				DD00A8611E23D10C00BC4A4B /* Main.storyboard */,
 				DD00A8641E23D10C00BC4A4B /* Assets.xcassets */,
@@ -110,12 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD00A86C1E23D10C00BC4A4B /* Build configuration list for PBXNativeTarget "Neurio Home Automation" */;
 			buildPhases = (
-				73E8AF8FFBF1DAB18FBF8515 /* Check Pods Manifest.lock */,
+				3B087C4A3B7DE774D41744D5 /* [CP] Check Pods Manifest.lock */,
 				DD00A8561E23D10C00BC4A4B /* Sources */,
 				DD00A8571E23D10C00BC4A4B /* Frameworks */,
 				DD00A8581E23D10C00BC4A4B /* Resources */,
-				5C0E071A90DD61C3D607927C /* Embed Pods Frameworks */,
-				5F7E687BC3B480FC97C1FF75 /* Copy Pods Resources */,
+				E273296E831DA593A629D1AC /* [CP] Embed Pods Frameworks */,
+				6BE0765304BF87E49C1ED041 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,29 +176,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5C0E071A90DD61C3D607927C /* Embed Pods Frameworks */ = {
+		3B087C4A3B7DE774D41744D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		5F7E687BC3B480FC97C1FF75 /* Copy Pods Resources */ = {
+		6BE0765304BF87E49C1ED041 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,19 +206,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		73E8AF8FFBF1DAB18FBF8515 /* Check Pods Manifest.lock */ = {
+		E273296E831DA593A629D1AC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -229,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD00A8601E23D10C00BC4A4B /* NativeLoginViewController.swift in Sources */,
-				DD4F52941E25898400CA9C8C /* AuthManager.swift in Sources */,
+				DD4F52941E25898400CA9C8C /* NeurioManager.swift in Sources */,
 				DD969C601E27D4750029C5E3 /* AppSecrets.swift in Sources */,
 				DD00A85E1E23D10C00BC4A4B /* AppDelegate.swift in Sources */,
 				DD9445AA1E270F7E0088F763 /* HomeViewController.swift in Sources */,
@@ -353,7 +353,7 @@
 		};
 		DD00A86D1E23D10C00BC4A4B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECD25E5BD014B1E93B7DAA70 /* Pods-Neurio Home Automation.debug.xcconfig */;
+			baseConfigurationReference = 036BF66C8F68BA0250052E0C /* Pods-Neurio Home Automation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -370,7 +370,7 @@
 		};
 		DD00A86E1E23D10C00BC4A4B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45DE17F0AFD425F2127F1F2B /* Pods-Neurio Home Automation.release.xcconfig */;
+			baseConfigurationReference = 009E1B060435DD9E6970CB0A /* Pods-Neurio Home Automation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

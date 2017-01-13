@@ -12,19 +12,24 @@ import SafariServices
 
 class HomeViewController: UIViewController, SFSafariViewControllerDelegate, AuthManagerProtocol
 {
+    @IBOutlet weak var mustBeOnLANLabel: UILabel!
+    @IBOutlet weak var ipAddressTextField: UITextField!
+    
     var webView:SFSafariViewController!
-    let authManager = AuthManager.sharedInstance
+    let neurioManager = NeurioManager.sharedInstance
     
     override func viewDidLoad()
     {
-        self.view.backgroundColor = UIColor.blue
         
-        if let neurioURL:URL = URL(string: authManager.getNuerioAuthorizationURL())
+        mustBeOnLANLabel.text = "In order to get sensorIDs of the sensors connected to your Neurio, we need the IP address of your Neurio on your LAN"
+        ipAddressTextField.placeholder = "IP Address"
+        
+        if let neurioURL:URL = URL(string: neurioManager.getNuerioAuthorizationURL())
         {
             webView = SFSafariViewController(url: neurioURL, entersReaderIfAvailable: false)
             webView.delegate = self
             
-            authManager.subscribeToListener(listener: self)
+            neurioManager.subscribeToListener(listener: self)
         }
     }
     
@@ -32,9 +37,17 @@ class HomeViewController: UIViewController, SFSafariViewControllerDelegate, Auth
     {
         super.viewDidAppear(animated)
         
-        if !authManager.hasValidToken()
+        if !neurioManager.hasValidToken()
         {
-            self.present(webView, animated: true, completion: nil)
+            if !neurioManager.hasAuthCode()
+            {
+                self.present(webView, animated: true, completion: nil)
+            }
+        }
+        else
+        {
+//            neurioManager.getCurrentUser()
+            neurioManager.getTodaysHistory()
         }
     }
     
@@ -45,5 +58,9 @@ class HomeViewController: UIViewController, SFSafariViewControllerDelegate, Auth
     //MARK: AuthManagerProtocol
     func handleURL(url: URL) {
         dismiss(animated: true, completion: nil)
+        
+        //if state == auth_code
+        neurioManager.NeurioLoginWithToken()
     }
 }
+ 

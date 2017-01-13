@@ -49,7 +49,7 @@ class NativeLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func submitLogin() -> Void {
-        let authManager = AuthManager.sharedInstance
+        let authManager = NeurioManager.sharedInstance
 //        let validLogin = authManager.NeurioLoginWithCredentials(username: usernameTextField.text!, password: passwordTextField.text!)
 //        debugPrint(validLogin)
     }
