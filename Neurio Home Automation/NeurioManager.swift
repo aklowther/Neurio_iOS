@@ -64,6 +64,7 @@ public class NeurioManager : NSObject
     public func hasValidSensorID() -> String?
     {
         guard let sensorID = strongBox.unarchive(objectForKey: "sensorID") as? String  else {
+            //TODO: make this check getCurrentUser(), if user has more than 1 Neurio, ask which they'd like to use
             return ADAMSENSORID!
         }
         

@@ -44,11 +44,6 @@ class GetSensorViewController: UIViewController, SFSafariViewControllerDelegate,
                 self.present(webView, animated: true, completion: nil)
             }
         }
-        else
-        {
-//            neurioManager.getCurrentUser()
-            neurioManager.getTodaysHistory()
-        }
     }
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
