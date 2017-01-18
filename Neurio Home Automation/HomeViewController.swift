@@ -2,65 +2,105 @@
 //  HomeViewController.swift
 //  Neurio Home Automation
 //
-//  Created by Adam Lowther on 1/11/17.
+//  Created by Adam Lowther on 1/13/17.
 //  Copyright © 2017 Adam Lowther. All rights reserved.
 //
 
 import Foundation
 import UIKit
-import SafariServices
 
-class HomeViewController: UIViewController, SFSafariViewControllerDelegate, AuthManagerProtocol
+struct NeurioHistoryPartial {
+    var key: String
+    var value : Any
+}
+
+typealias ReturnPartials = (NeurioHistoryPartial?) -> Void
+
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    @IBOutlet weak var mustBeOnLANLabel: UILabel!
-    @IBOutlet weak var ipAddressTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
-    var webView:SFSafariViewController!
-    let neurioManager = NeurioManager.sharedInstance
+    
+    var _cellData: Array<NeurioHistoryPartial> = Array()
+    
+    let neurioManager : NeurioManager = NeurioManager.sharedInstance
     
     override func viewDidLoad()
     {
+        super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
-        mustBeOnLANLabel.text = "In order to get sensorIDs of the sensors connected to your Neurio, we need the IP address of your Neurio on your LAN"
-        ipAddressTextField.placeholder = "IP Address"
-        
-        if let neurioURL:URL = URL(string: neurioManager.getNuerioAuthorizationURL())
-        {
-            webView = SFSafariViewController(url: neurioURL, entersReaderIfAvailable: false)
-            webView.delegate = self
-            
-            neurioManager.subscribeToListener(listener: self)
-        }
+        getTodayHistory()
     }
     
-    override func viewDidAppear(_ animated: Bool)
-    {
-        super.viewDidAppear(animated)
+    //MARK: Tableview
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return _cellData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if !neurioManager.hasValidToken()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let partial : NeurioHistoryPartial = _cellData[indexPath.row]
+        cell.textLabel!.text = partial.key
+        cell.detailTextLabel!.text = String(format: "%@", partial.value as! CVarArg)
+        
+        return UITableViewCell()
+    }
+    
+    //MARK:  Private
+    func getTodayHistory() -> Void {
+        if let sensorID : String = neurioManager.hasValidSensorID()
         {
-            if !neurioManager.hasAuthCode()
-            {
-                self.present(webView, animated: true, completion: nil)
-            }
+            _cellData.removeAll()
+            neurioManager.getTodaysHistory(sensorID: sensorID, completionHandler: { result in
+                debugPrint(result)
+                if let generationEnergy = result?["generationEnergy"]
+                {
+                    self._cellData.append(NeurioHistoryPartial(key: "Generation Energy", value: generationEnergy))
+                }
+                
+                if let consumptionEnergy = result?["consumptionEnergy"]
+                {
+                    self._cellData.append(NeurioHistoryPartial(key: "Consumption Energy", value: consumptionEnergy))
+                }
+                
+                if let importedEnergy = result?["importedEnergy"]
+                {
+                    self._cellData.append(NeurioHistoryPartial(key: "Imported Energy", value: importedEnergy))
+                }
+                
+                if let exportedEnergy = result?["exportedEnergy"]
+                {
+                    self._cellData.append(NeurioHistoryPartial(key: "Exported Energy", value: exportedEnergy))
+                }
+                
+//                if let generationPower = result?["generationPower"]
+//                {
+//                    self._cellData.append(NeurioHistoryPartial(key: "Generation Power", value: generationPower))
+//                }
+//                
+//                if let consumptionPower = result?["consumptionPower"]
+//                {
+//                    self._cellData.append(NeurioHistoryPartial(key: "Consumption Power", value: consumptionPower))
+//                }
+                
+                self.tableView.reloadData()
+            })
         }
         else
         {
-//            neurioManager.getCurrentUser()
-            neurioManager.getTodaysHistory()
+            self.performSegue(withIdentifier: "showGetSensorVC", sender: self)
         }
     }
     
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        dismiss(animated: true)
-    }
-    
-    //MARK: AuthManagerProtocol
-    func handleURL(url: URL) {
-        dismiss(animated: true, completion: nil)
-        
-        //if state == auth_code
-        neurioManager.NeurioLoginWithToken()
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        getTodayHistory()
     }
 }
- 

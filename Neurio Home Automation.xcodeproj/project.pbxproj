@@ -8,21 +8,83 @@
 
 /* Begin PBXBuildFile section */
 		67EB83960C9AEC0A78E87CFA /* Pods_Neurio_Home_Automation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9996B87BCCAAC006FF30147F /* Pods_Neurio_Home_Automation.framework */; };
+		93AC5CDB54D51BE5B1BA5DB8 /* Pods_WatchApp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E6FAD634381386C2CF7189 /* Pods_WatchApp_Extension.framework */; };
 		DD00A85E1E23D10C00BC4A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00A85D1E23D10C00BC4A4B /* AppDelegate.swift */; };
 		DD00A8601E23D10C00BC4A4B /* NativeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00A85F1E23D10C00BC4A4B /* NativeLoginViewController.swift */; };
 		DD00A8631E23D10C00BC4A4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD00A8611E23D10C00BC4A4B /* Main.storyboard */; };
 		DD00A8651E23D10C00BC4A4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD00A8641E23D10C00BC4A4B /* Assets.xcassets */; };
 		DD00A8681E23D10C00BC4A4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD00A8661E23D10C00BC4A4B /* LaunchScreen.storyboard */; };
+		DD224DEE1E2ED4BE007CAD35 /* NeurioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F52931E25898400CA9C8C /* NeurioManager.swift */; };
+		DD224DF01E2ED7CE007CAD35 /* EnergyDataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD224DEF1E2ED7CE007CAD35 /* EnergyDataRow.swift */; };
 		DD4F52941E25898400CA9C8C /* NeurioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F52931E25898400CA9C8C /* NeurioManager.swift */; };
-		DD9445AA1E270F7E0088F763 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9445A91E270F7E0088F763 /* HomeViewController.swift */; };
+		DD53C9FC1E2A9D8700E80F60 /* NeurioComplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD53C9FB1E2A9D8700E80F60 /* NeurioComplicationManager.swift */; };
+		DD53CA031E2AA20900E80F60 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD53CA011E2AA20900E80F60 /* Interface.storyboard */; };
+		DD53CA051E2AA20900E80F60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD53CA041E2AA20900E80F60 /* Assets.xcassets */; };
+		DD53CA0C1E2AA20900E80F60 /* WatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DD53CA0B1E2AA20900E80F60 /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DD53CA131E2AA20A00E80F60 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD53CA121E2AA20A00E80F60 /* InterfaceController.swift */; };
+		DD53CA151E2AA20A00E80F60 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD53CA141E2AA20A00E80F60 /* ExtensionDelegate.swift */; };
+		DD53CA171E2AA20A00E80F60 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD53CA161E2AA20A00E80F60 /* NotificationController.swift */; };
+		DD53CA191E2AA20A00E80F60 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD53CA181E2AA20A00E80F60 /* ComplicationController.swift */; };
+		DD53CA1B1E2AA20A00E80F60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD53CA1A1E2AA20A00E80F60 /* Assets.xcassets */; };
+		DD53CA1F1E2AA20A00E80F60 /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DD53C9FF1E2AA20900E80F60 /* WatchApp.app */; };
+		DD53CA2A1E2B085700E80F60 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD53CA291E2B085700E80F60 /* NotificationManager.swift */; };
+		DD53CA2C1E2B086400E80F60 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */; };
+		DD9445AA1E270F7E0088F763 /* GetSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9445A91E270F7E0088F763 /* GetSensorViewController.swift */; };
 		DD969C601E27D4750029C5E3 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */; };
 		DD969C621E27DE090029C5E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD969C611E27DE090029C5E3 /* Security.framework */; };
+		DDA2C4A01E29484F0030F505 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA2C49F1E29484F0030F505 /* HomeViewController.swift */; };
+		DDA46ABA1E2C5ADA00EA2ED4 /* past48Hours.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDA46AB91E2C5ADA00EA2ED4 /* past48Hours.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DD53CA0D1E2AA20900E80F60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD00A8521E23D10C00BC4A4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD53CA0A1E2AA20900E80F60;
+			remoteInfo = "WatchApp Extension";
+		};
+		DD53CA1D1E2AA20A00E80F60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD00A8521E23D10C00BC4A4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD53C9FE1E2AA20900E80F60;
+			remoteInfo = WatchApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD53CA231E2AA20A00E80F60 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DD53CA0C1E2AA20900E80F60 /* WatchApp Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD53CA271E2AA20A00E80F60 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DD53CA1F1E2AA20A00E80F60 /* WatchApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		009E1B060435DD9E6970CB0A /* Pods-Neurio Home Automation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neurio Home Automation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation.release.xcconfig"; sourceTree = "<group>"; };
 		036BF66C8F68BA0250052E0C /* Pods-Neurio Home Automation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neurio Home Automation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation.debug.xcconfig"; sourceTree = "<group>"; };
+		609344B6DA7DC8C07E5D044B /* Pods-WatchApp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchApp Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		9996B87BCCAAC006FF30147F /* Pods_Neurio_Home_Automation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Neurio_Home_Automation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E551C62ECD419E1FD08B0DE /* Pods-WatchApp Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchApp Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension.release.xcconfig"; sourceTree = "<group>"; };
+		A4E6FAD634381386C2CF7189 /* Pods_WatchApp_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchApp_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD00A85A1E23D10C00BC4A4B /* Neurio Home Automation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Neurio Home Automation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD00A85D1E23D10C00BC4A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD00A85F1E23D10C00BC4A4B /* NativeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeLoginViewController.swift; sourceTree = "<group>"; };
@@ -30,20 +92,53 @@
 		DD00A8641E23D10C00BC4A4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD00A8671E23D10C00BC4A4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD00A8691E23D10C00BC4A4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD224DEF1E2ED7CE007CAD35 /* EnergyDataRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyDataRow.swift; sourceTree = "<group>"; };
+		DD45C8EC1E2E4B6E0048A232 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Neurio_Home_Automation-hfhdyopryvqmwebksjlotkkjujds/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		DD4F52931E25898400CA9C8C /* NeurioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeurioManager.swift; sourceTree = "<group>"; };
-		DD9445A91E270F7E0088F763 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DD53C9FB1E2A9D8700E80F60 /* NeurioComplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeurioComplicationManager.swift; sourceTree = "<group>"; };
+		DD53C9FF1E2AA20900E80F60 /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD53CA021E2AA20900E80F60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		DD53CA041E2AA20900E80F60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD53CA061E2AA20900E80F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD53CA0B1E2AA20900E80F60 /* WatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD53CA111E2AA20A00E80F60 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		DD53CA121E2AA20A00E80F60 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		DD53CA141E2AA20A00E80F60 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		DD53CA161E2AA20A00E80F60 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		DD53CA181E2AA20A00E80F60 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		DD53CA1A1E2AA20A00E80F60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD53CA1C1E2AA20A00E80F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD53CA291E2B085700E80F60 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		DD9445A91E270F7E0088F763 /* GetSensorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSensorViewController.swift; sourceTree = "<group>"; };
 		DD969C5B1E27D1610029C5E3 /* Neurio Home Automation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Neurio Home Automation-Bridging-Header.h"; sourceTree = "<group>"; };
 		DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		DD969C611E27DE090029C5E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DDA2C49F1E29484F0030F505 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DDA46AB91E2C5ADA00EA2ED4 /* past48Hours.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = past48Hours.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B5BAFD8F6B24EFE3CD5415D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD00A8571E23D10C00BC4A4B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DD969C621E27DE090029C5E3 /* Security.framework in Frameworks */,
 				67EB83960C9AEC0A78E87CFA /* Pods_Neurio_Home_Automation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD53CA081E2AA20900E80F60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93AC5CDB54D51BE5B1BA5DB8 /* Pods_WatchApp_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +150,8 @@
 			children = (
 				036BF66C8F68BA0250052E0C /* Pods-Neurio Home Automation.debug.xcconfig */,
 				009E1B060435DD9E6970CB0A /* Pods-Neurio Home Automation.release.xcconfig */,
+				609344B6DA7DC8C07E5D044B /* Pods-WatchApp Extension.debug.xcconfig */,
+				9E551C62ECD419E1FD08B0DE /* Pods-WatchApp Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -62,8 +159,10 @@
 		AAE9B842C7E0727865C99D8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD45C8EC1E2E4B6E0048A232 /* Alamofire.framework */,
 				DD969C611E27DE090029C5E3 /* Security.framework */,
 				9996B87BCCAAC006FF30147F /* Pods_Neurio_Home_Automation.framework */,
+				A4E6FAD634381386C2CF7189 /* Pods_WatchApp_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -72,6 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				DD00A85C1E23D10C00BC4A4B /* Neurio Home Automation */,
+				DD53CA281E2AA3F500E80F60 /* Shared */,
+				DD53CA001E2AA20900E80F60 /* WatchApp */,
+				DD53CA0F1E2AA20900E80F60 /* WatchApp Extension */,
 				DD00A85B1E23D10C00BC4A4B /* Products */,
 				AAE9B842C7E0727865C99D8D /* Frameworks */,
 				145ADFF822DCB954B7409216 /* Pods */,
@@ -82,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				DD00A85A1E23D10C00BC4A4B /* Neurio Home Automation.app */,
+				DD53C9FF1E2AA20900E80F60 /* WatchApp.app */,
+				DD53CA0B1E2AA20900E80F60 /* WatchApp Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,15 +195,60 @@
 			children = (
 				DD00A85D1E23D10C00BC4A4B /* AppDelegate.swift */,
 				DD00A85F1E23D10C00BC4A4B /* NativeLoginViewController.swift */,
-				DD9445A91E270F7E0088F763 /* HomeViewController.swift */,
-				DD4F52931E25898400CA9C8C /* NeurioManager.swift */,
-				DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */,
+				DD9445A91E270F7E0088F763 /* GetSensorViewController.swift */,
 				DD00A8611E23D10C00BC4A4B /* Main.storyboard */,
+				DDA2C49F1E29484F0030F505 /* HomeViewController.swift */,
+				DD53C9FB1E2A9D8700E80F60 /* NeurioComplicationManager.swift */,
 				DD00A8641E23D10C00BC4A4B /* Assets.xcassets */,
 				DD00A8661E23D10C00BC4A4B /* LaunchScreen.storyboard */,
 				DD00A8691E23D10C00BC4A4B /* Info.plist */,
+				DDA46AB91E2C5ADA00EA2ED4 /* past48Hours.plist */,
 				DD969C5B1E27D1610029C5E3 /* Neurio Home Automation-Bridging-Header.h */,
+				DD53CA291E2B085700E80F60 /* NotificationManager.swift */,
 			);
+			path = "Neurio Home Automation";
+			sourceTree = "<group>";
+		};
+		DD53CA001E2AA20900E80F60 /* WatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				DD53CA011E2AA20900E80F60 /* Interface.storyboard */,
+				DD53CA041E2AA20900E80F60 /* Assets.xcassets */,
+				DD53CA061E2AA20900E80F60 /* Info.plist */,
+			);
+			path = WatchApp;
+			sourceTree = "<group>";
+		};
+		DD53CA0F1E2AA20900E80F60 /* WatchApp Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DD53CA121E2AA20A00E80F60 /* InterfaceController.swift */,
+				DD53CA141E2AA20A00E80F60 /* ExtensionDelegate.swift */,
+				DD53CA161E2AA20A00E80F60 /* NotificationController.swift */,
+				DD53CA181E2AA20A00E80F60 /* ComplicationController.swift */,
+				DD53CA1A1E2AA20A00E80F60 /* Assets.xcassets */,
+				DD53CA1C1E2AA20A00E80F60 /* Info.plist */,
+				DD53CA101E2AA20900E80F60 /* Supporting Files */,
+				DD224DEF1E2ED7CE007CAD35 /* EnergyDataRow.swift */,
+			);
+			path = "WatchApp Extension";
+			sourceTree = "<group>";
+		};
+		DD53CA101E2AA20900E80F60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DD53CA111E2AA20A00E80F60 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DD53CA281E2AA3F500E80F60 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				DD4F52931E25898400CA9C8C /* NeurioManager.swift */,
+				DD969C5F1E27D4750029C5E3 /* AppSecrets.swift */,
+			);
+			name = Shared;
 			path = "Neurio Home Automation";
 			sourceTree = "<group>";
 		};
@@ -116,15 +265,55 @@
 				DD00A8581E23D10C00BC4A4B /* Resources */,
 				E273296E831DA593A629D1AC /* [CP] Embed Pods Frameworks */,
 				6BE0765304BF87E49C1ED041 /* [CP] Copy Pods Resources */,
+				DD53CA271E2AA20A00E80F60 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DD53CA1E1E2AA20A00E80F60 /* PBXTargetDependency */,
 			);
 			name = "Neurio Home Automation";
 			productName = "Neurio Home Automation";
 			productReference = DD00A85A1E23D10C00BC4A4B /* Neurio Home Automation.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DD53C9FE1E2AA20900E80F60 /* WatchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD53CA241E2AA20A00E80F60 /* Build configuration list for PBXNativeTarget "WatchApp" */;
+			buildPhases = (
+				DD53C9FD1E2AA20900E80F60 /* Resources */,
+				DD53CA231E2AA20A00E80F60 /* Embed App Extensions */,
+				B5BAFD8F6B24EFE3CD5415D6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD53CA0E1E2AA20900E80F60 /* PBXTargetDependency */,
+			);
+			name = WatchApp;
+			productName = WatchApp;
+			productReference = DD53C9FF1E2AA20900E80F60 /* WatchApp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		DD53CA0A1E2AA20900E80F60 /* WatchApp Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD53CA201E2AA20A00E80F60 /* Build configuration list for PBXNativeTarget "WatchApp Extension" */;
+			buildPhases = (
+				C3C96E6C1DD41A5E367CA8F9 /* [CP] Check Pods Manifest.lock */,
+				DD53CA071E2AA20900E80F60 /* Sources */,
+				DD53CA081E2AA20900E80F60 /* Frameworks */,
+				DD53CA091E2AA20900E80F60 /* Resources */,
+				6E8E27773FBB0ED3F1161106 /* [CP] Embed Pods Frameworks */,
+				4E8B37047A06AF6134AED3D4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchApp Extension";
+			productName = "WatchApp Extension";
+			productReference = DD53CA0B1E2AA20900E80F60 /* WatchApp Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -140,6 +329,16 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = E5ANWKSXGH;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					DD53C9FE1E2AA20900E80F60 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = E5ANWKSXGH;
+						ProvisioningStyle = Automatic;
+					};
+					DD53CA0A1E2AA20900E80F60 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = E5ANWKSXGH;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -158,6 +357,8 @@
 			projectRoot = "";
 			targets = (
 				DD00A8591E23D10C00BC4A4B /* Neurio Home Automation */,
+				DD53C9FE1E2AA20900E80F60 /* WatchApp */,
+				DD53CA0A1E2AA20900E80F60 /* WatchApp Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -167,9 +368,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA46ABA1E2C5ADA00EA2ED4 /* past48Hours.plist in Resources */,
 				DD00A8681E23D10C00BC4A4B /* LaunchScreen.storyboard in Resources */,
 				DD00A8651E23D10C00BC4A4B /* Assets.xcassets in Resources */,
 				DD00A8631E23D10C00BC4A4B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD53C9FD1E2AA20900E80F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD53CA051E2AA20900E80F60 /* Assets.xcassets in Resources */,
+				DD53CA031E2AA20900E80F60 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD53CA091E2AA20900E80F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD53CA1B1E2AA20A00E80F60 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +410,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		4E8B37047A06AF6134AED3D4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6BE0765304BF87E49C1ED041 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +438,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Neurio Home Automation/Pods-Neurio Home Automation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E8E27773FBB0ED3F1161106 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3C96E6C1DD41A5E367CA8F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E273296E831DA593A629D1AC /* [CP] Embed Pods Frameworks */ = {
@@ -230,13 +494,43 @@
 			files = (
 				DD00A8601E23D10C00BC4A4B /* NativeLoginViewController.swift in Sources */,
 				DD4F52941E25898400CA9C8C /* NeurioManager.swift in Sources */,
+				DD53C9FC1E2A9D8700E80F60 /* NeurioComplicationManager.swift in Sources */,
 				DD969C601E27D4750029C5E3 /* AppSecrets.swift in Sources */,
 				DD00A85E1E23D10C00BC4A4B /* AppDelegate.swift in Sources */,
-				DD9445AA1E270F7E0088F763 /* HomeViewController.swift in Sources */,
+				DD9445AA1E270F7E0088F763 /* GetSensorViewController.swift in Sources */,
+				DD53CA2A1E2B085700E80F60 /* NotificationManager.swift in Sources */,
+				DDA2C4A01E29484F0030F505 /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD53CA071E2AA20900E80F60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD53CA171E2AA20A00E80F60 /* NotificationController.swift in Sources */,
+				DD53CA191E2AA20A00E80F60 /* ComplicationController.swift in Sources */,
+				DD224DF01E2ED7CE007CAD35 /* EnergyDataRow.swift in Sources */,
+				DD53CA151E2AA20A00E80F60 /* ExtensionDelegate.swift in Sources */,
+				DD53CA131E2AA20A00E80F60 /* InterfaceController.swift in Sources */,
+				DD53CA2C1E2B086400E80F60 /* AppSecrets.swift in Sources */,
+				DD224DEE1E2ED4BE007CAD35 /* NeurioManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DD53CA0E1E2AA20900E80F60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD53CA0A1E2AA20900E80F60 /* WatchApp Extension */;
+			targetProxy = DD53CA0D1E2AA20900E80F60 /* PBXContainerItemProxy */;
+		};
+		DD53CA1E1E2AA20A00E80F60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD53C9FE1E2AA20900E80F60 /* WatchApp */;
+			targetProxy = DD53CA1D1E2AA20A00E80F60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DD00A8611E23D10C00BC4A4B /* Main.storyboard */ = {
@@ -253,6 +547,14 @@
 				DD00A8671E23D10C00BC4A4B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DD53CA011E2AA20900E80F60 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD53CA021E2AA20900E80F60 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -384,6 +686,78 @@
 			};
 			name = Release;
 		};
+		DD53CA211E2AA20A00E80F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 609344B6DA7DC8C07E5D044B /* Pods-WatchApp Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = E5ANWKSXGH;
+				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lowther.Neurio-Home-Automation.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		DD53CA221E2AA20A00E80F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E551C62ECD419E1FD08B0DE /* Pods-WatchApp Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = E5ANWKSXGH;
+				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lowther.Neurio-Home-Automation.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		DD53CA251E2AA20A00E80F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E5ANWKSXGH;
+				IBSC_MODULE = WatchApp_Extension;
+				INFOPLIST_FILE = WatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lowther.Neurio-Home-Automation.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		DD53CA261E2AA20A00E80F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E5ANWKSXGH;
+				IBSC_MODULE = WatchApp_Extension;
+				INFOPLIST_FILE = WatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lowther.Neurio-Home-Automation.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -401,6 +775,24 @@
 			buildConfigurations = (
 				DD00A86D1E23D10C00BC4A4B /* Debug */,
 				DD00A86E1E23D10C00BC4A4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD53CA201E2AA20A00E80F60 /* Build configuration list for PBXNativeTarget "WatchApp Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD53CA211E2AA20A00E80F60 /* Debug */,
+				DD53CA221E2AA20A00E80F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD53CA241E2AA20A00E80F60 /* Build configuration list for PBXNativeTarget "WatchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD53CA251E2AA20A00E80F60 /* Debug */,
+				DD53CA261E2AA20A00E80F60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

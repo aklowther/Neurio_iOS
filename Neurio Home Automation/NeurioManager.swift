@@ -8,13 +8,16 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
+//import SwiftyJSON
 import Strongbox
 
 protocol AuthManagerProtocol
 {
     func handleURL(url: URL)
 }
+
+typealias CompletionHandler = (Bool) -> Void
+public typealias ReturnDictionary = (Dictionary<String, Any>?) -> Void
 
 
 public class NeurioManager : NSObject
@@ -26,7 +29,9 @@ public class NeurioManager : NSObject
     private let _clientSecret = NEURIOCLIENTSECRET //value come from Swift file in .gitignore
     private var _token : String!
     private var _authCode : String!
-    private var listeners : NSHashTable! = NSHashTable<AnyObject>.weakObjects()
+    private var _listeners : NSHashTable! = NSHashTable<AnyObject>.weakObjects()
+    
+    private var _last48Hours : Array<Dictionary<String, Any>> = Array<Dictionary<String, Any>>()
     
     override init()
     {
@@ -39,6 +44,7 @@ public class NeurioManager : NSObject
         return "https://api.neur.io/v1/oauth2/authorize?response_type=code&client_id=\(_clientID!)&redirect_uri=alow://x-callback-url&state=auth_code"
     }
     
+    //MARK: Validation
     public func hasValidToken() -> Bool
     {
         if (strongBox.unarchive(objectForKey: "token") as? String) != nil
@@ -55,6 +61,15 @@ public class NeurioManager : NSObject
         return (_authCode != nil)
     }
     
+    public func hasValidSensorID() -> String?
+    {
+        guard let sensorID = strongBox.unarchive(objectForKey: "sensorID") as? String  else {
+            return ADAMSENSORID!
+        }
+        
+        return sensorID
+    }
+    
     public func handleOpenURL(url : URL)
     {
         debugPrint(url.absoluteString)
@@ -63,9 +78,8 @@ public class NeurioManager : NSObject
         let endIndex: Range! = url.absoluteString.range(of: "&state")
         let tokenEnd: String! = url.absoluteString.substring(to: endIndex!.lowerBound)
         _authCode = tokenEnd.substring(from: startIndex!.upperBound)
-//        strongBox.archive(_authCode, key: "authCode")
         
-        for listener in listeners.objectEnumerator()
+        for listener in _listeners.objectEnumerator()
         {
             (listener as! AuthManagerProtocol).handleURL(url: url)
         }
@@ -113,7 +127,7 @@ public class NeurioManager : NSObject
                                 if let expiresNumber : NSNumber = responseDict["expires_in"] as? NSNumber
                                 {
                                     let expiresDate : Date = createdDate.addingTimeInterval(expiresNumber.doubleValue)
-                                    self.strongBox.archive(expiresDate, key: "expiresDate")
+                                    _=self.strongBox.archive(expiresDate, key: "expiresDate")
                                 }
                             }
                             else
@@ -122,7 +136,7 @@ public class NeurioManager : NSObject
                             }
                         }
   
-                        self.strongBox.archive(self._token, key: "token")
+                        _=self.strongBox.archive(self._token, key: "token")
                         debugPrint(self._token)
                     }
                 }
@@ -130,12 +144,11 @@ public class NeurioManager : NSObject
         
     }
     
-    func isNeurioAPIAlive() -> Bool {
+    func isNeurioAPIAlive(completionHandler : @escaping CompletionHandler) -> Void {
         Alamofire.request("https://api.neur.io/v1/status")
-            .response { response in
-                return (response.response?.statusCode == 200)
+            .responseJSON { response in
+                completionHandler(response.result.isSuccess)
         }
-        return true
     }
     
     //MARK: Current User
@@ -154,25 +167,78 @@ public class NeurioManager : NSObject
     }
     
     //MARK: 
-    public func getTodaysHistory() -> Void
+    public func getTodaysHistory(sensorID: String, completionHandler: @escaping ReturnDictionary) -> Void
     {
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone.autoupdatingCurrent
-        let dateAtMidnight = calendar.startOfDay(for: Date())
-        
-        let dateFormatter = self.outgoingNeurioDateFormatter()
-
-        let startDateString : String! = dateFormatter.string(from: dateAtMidnight)
-        let url = "https://api.neur.io/v1/samples?sensorId=\(ADAMSENSORID!)&start=\(startDateString!)&granularity=days"
-        let headers = ["Authorization" : String(format: "Bearer %@", _token!)]
-        
-        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.prettyPrinted, headers: headers)
-            .validate()
-            .responseJSON { (response) in
-                if response.result.isSuccess
-                {
-                    debugPrint(response)
-                }
+        if self.hasValidToken()
+        {
+            var calendar = Calendar.current
+            calendar.timeZone = TimeZone.autoupdatingCurrent
+            let dateAtMidnight = calendar.startOfDay(for: Date())
+            
+            let dateFormatter = self.outgoingNeurioDateFormatter()
+            
+            let startDateString : String! = dateFormatter.string(from: dateAtMidnight)
+            let url = "https://api.neur.io/v1/samples?sensorId=\(sensorID)&start=\(startDateString!)&granularity=days"
+//            let url = "https://api.neur.io/v1/samples/live?sensorId=\(sensorID)"
+            let headers = ["Authorization" : String(format: "Bearer %@", _token!)]
+            
+            Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.prettyPrinted, headers: headers)
+                .validate()
+                .responseJSON { (response) in
+                    if let responseResultArray = response.result.value as? Array<Any>
+                    {
+                        if let responseResult = responseResultArray[0] as? Dictionary<String, Any>
+                        {
+                            self.processNeurioHistory(withData: responseResult, forDate: dateAtMidnight)
+                            completionHandler(responseResult)
+                        }
+                        else
+                        {
+                            completionHandler(nil)
+                        }
+                    }
+                    else
+                    {
+                        completionHandler(nil)
+                    }
+            }
+        }
+    }
+    
+    public func getTodaysEnergyHistory(sensorID: String, completionHandler: @escaping ReturnDictionary) -> Void
+    {
+        if self.hasValidToken()
+        {
+            var calendar = Calendar.current
+            calendar.timeZone = TimeZone.autoupdatingCurrent
+            let dateAtMidnight = calendar.startOfDay(for: Date())
+            
+            let dateFormatter = self.outgoingNeurioDateFormatter()
+            
+            let startDateString : String! = dateFormatter.string(from: dateAtMidnight)
+            let url = "https://api.neur.io/v1/samples/stats?sensorId=\(sensorID)&start=\(startDateString!)&granularity=days"
+            let headers = ["Authorization" : String(format: "Bearer %@", _token!)]
+            
+            Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.prettyPrinted, headers: headers)
+                .validate()
+                .responseJSON { (response) in
+                    if let responseResultArray = response.result.value as? Array<Any>
+                    {
+                        if let responseResult = responseResultArray[0] as? Dictionary<String, Any>
+                        {
+                            self.processNeurioEnergyQuery(withData: responseResult, forDate: dateAtMidnight)
+                            completionHandler(responseResult)
+                        }
+                        else
+                        {
+                            completionHandler(nil)
+                        }
+                    }
+                    else
+                    {
+                        completionHandler(nil)
+                    }
+            }
         }
     }
     
@@ -195,14 +261,147 @@ public class NeurioManager : NSObject
         return dateFormatter
     }
     
+    //MARK: DataStorage
+    private func processNeurioHistory(withData data:Dictionary<String, Any>, forDate date:Date) -> Void
+    {
+        if _last48Hours.count == 0
+        {
+            _last48Hours = loadLast2DaysOfData()
+        }
+        
+        let dateFormatter = incomingNeurioDateFormatter()
+        if let newTimestamp = dateFormatter.date(from: data["timestamp"] as! String)
+        {
+            for (index, partialObject) in _last48Hours.enumerated()
+            {
+                if let dataDate : String = partialObject["timestamp"] as! String?
+                {
+                    if let dateTime = dateFormatter.date(from: dataDate)
+                    {
+                        if (dateTime.compare(date) == .orderedAscending)
+                        {
+                            _last48Hours.remove(at: index)
+                        }
+                        else if (dateTime.compare(newTimestamp) == .orderedSame)
+                        {
+                            return
+                        }
+                        else
+                        {
+                            break
+                        }
+                    }
+                }
+            }
+            _last48Hours.append(data)
+        }
+    }
+    
+    private func processNeurioEnergyQuery(withData data:Dictionary<String, Any>, forDate date:Date) -> Void
+    {
+        if _last48Hours.count == 0
+        {
+            _last48Hours = loadLast2DaysOfData()
+        }
+        
+        let dateFormatter = incomingNeurioDateFormatter()
+//        if let startTimestamp = dateFormatter.date(from: data["start"] as! String),//timestamp
+        if let endTimestamp = dateFormatter.date(from: data["end"] as! String)
+        {
+            for (index, partialObject) in _last48Hours.enumerated()
+            {
+                if let dataDate : String = partialObject["start"] as! String?
+                {
+                    if let dateTime = dateFormatter.date(from: dataDate)
+                    {
+                        if (dateTime.compare(date) == .orderedAscending)
+                        {
+                            _last48Hours.remove(at: index)
+                        }
+                        else if (dateTime.compare(endTimestamp) == .orderedSame)
+                        {
+                            return
+                        }
+                        else
+                        {
+                            break
+                        }
+                    }
+                }
+            }
+            _last48Hours.append(data)
+        }
+    }
+    
+    public func saveLast2DaysOfData() -> Void
+    {
+        let directories = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+        
+        if let documents = directories.first
+        {
+            NSKeyedArchiver.archiveRootObject(_last48Hours, toFile: "\(documents)/past48Hours.plist")
+        }
+    }
+    
+    private func loadLast2DaysOfData() -> Array<Dictionary<String, Any>>
+    {
+        let directories = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+        if let documents = directories.first
+        {
+//            if let urlDocuments = NSURL(string: documents)
+//            {
+                if let tempLoad = NSKeyedUnarchiver.unarchiveObject(withFile: "\(documents)/past48Hours.plist")
+                {
+                    return tempLoad as! [[String: Any]]
+//                    debugPrint(tempLoad)
+                }
+                
+//                if let past48HoursURL = urlDocuments.appendingPathComponent("past48Hours.plist"),
+//                    let tempLoadData = try? Data(contentsOf: past48HoursURL)
+//                {
+////                    let tempLoadData = try? Data(contentsOf: past48HoursURL)
+////                    if let tempLoad = try? PropertyListSerialization.propertyList(from: tempLoadData, options: [], format: nil) as? [[String: Any]]
+//                    if let tempLoad = NSKeyedUnarchiver.unarchiveObject(withFile: "\(documents)/past48Hours.plist")
+//                    {
+////                        return tempLoad as Array<Dictionary<String, Any>>!
+//                        debugPrint(tempLoad)
+//                    }
+//                    else
+//                    {
+//                        return self.loadOriginalPlist()
+//                    }
+//                }
+//                else
+//                {
+//                    return self.loadOriginalPlist()
+//                }
+//            }
+        }
+        
+        return Array()
+    }
+    
+//    private func loadOriginalPlist() -> Array<Dictionary<String, Any>>
+//    {
+//        if let fileUrl = Bundle.main.url(forResource: "past48Hours", withExtension: "plist"),
+//            let data = try? Data(contentsOf: fileUrl)
+//        {
+//            if let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [[String: Any]]
+//            {
+//                return result as Array<Dictionary<String, Any>>!
+//            }
+//        }
+//        return Array()
+//    }
+    
     //MARK: Listeners
     public func subscribeToListener(listener: AnyObject)
     {
-        listeners.add(listener)
+        _listeners.add(listener)
     }
     
     public func unsubscribeFromListener(listener: AnyObject)
     {
-        listeners.remove(listener)
+        _listeners.remove(listener)
     }
 }
