@@ -1,0 +1,4 @@
+language: objective-c
+
+script:
+  - xctool -workspace "Neurio Home Automation.xcworkspace" -scheme "Neurio Home Automation" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
