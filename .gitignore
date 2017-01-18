@@ -3,6 +3,7 @@
 *.xcuserstate
 *.xccheckout
 *.xcuserdatad
+*.xcscmblueprint
 xcuserdata/
 
 Pods/
