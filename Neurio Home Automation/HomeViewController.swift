@@ -49,55 +49,83 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let partial : NeurioHistoryPartial = _cellData[indexPath.row]
         cell.textLabel!.text = partial.key
-        cell.detailTextLabel!.text = String(format: "%@", partial.value as! CVarArg)
+        cell.detailTextLabel!.text = String(format: "%.02f kWh", partial.value as! Double)
         
-        return UITableViewCell()
+        return cell
     }
     
     //MARK:  Private
     func getTodayHistory() -> Void {
-        if let sensorID : String = neurioManager.hasValidSensorID()
+        if neurioManager.hasValidToken()
         {
-            _cellData.removeAll()
-            neurioManager.getTodaysHistory(sensorID: sensorID, completionHandler: { result in
-                debugPrint(result)
-                if let generationEnergy = result?["generationEnergy"]
+            if let sensorID : String = neurioManager.hasValidSensorID()
+            {
+                _cellData.removeAll()
+                if let mostRecentSavedEnergy = neurioManager.getTodaysEnergyHistory(sensorID: sensorID, completionHandler: { result in
+                    debugPrint(result)
+                    self._cellData.removeAll()
+                    if let generationEnergy = result?["generationEnergy"]
+                    {
+                        let generatedkWh = ((generationEnergy as! Double)/3600000.0)
+                        self._cellData.append(NeurioHistoryPartial(key: "Generation Energy", value: generatedkWh))
+                    }
+                    
+                    if let consumptionEnergy = result?["consumptionEnergy"]
+                    {
+                        let consumptionEnergykWh = ((consumptionEnergy as! Double)/3600000.0)
+                        self._cellData.append(NeurioHistoryPartial(key: "Consumption Energy", value: consumptionEnergykWh))
+                    }
+                    
+                    if let importedEnergy = result?["importedEnergy"]
+                    {
+                        let importedkWH = ((importedEnergy as! Double)/3600000.0)
+                        self._cellData.append(NeurioHistoryPartial(key: "Imported Energy", value: importedkWH))
+                    }
+                    
+                    if let exportedEnergy = result?["exportedEnergy"]
+                    {
+                        let exportedkWh = ((exportedEnergy as! Double)/3600000.0)
+                        self._cellData.append(NeurioHistoryPartial(key: "Exported Energy", value: exportedkWh))
+                    }
+                    self.tableView.reloadData()
+                })
                 {
-                    self._cellData.append(NeurioHistoryPartial(key: "Generation Energy", value: generationEnergy))
+                    if let generationEnergy = mostRecentSavedEnergy["generationEnergy"]
+                    {
+                        let generatedkWh = ((generationEnergy as! Double)/3600000.0)
+                        _cellData.append(NeurioHistoryPartial(key: "Generation Energy", value: generatedkWh))
+                    }
+                    
+                    if let consumptionEnergy = mostRecentSavedEnergy["consumptionEnergy"]
+                    {
+                        let consumptionEnergykWh = ((consumptionEnergy as! Double)/3600000.0)
+                        _cellData.append(NeurioHistoryPartial(key: "Consumption Energy", value: consumptionEnergykWh))
+                    }
+                    
+                    if let importedEnergy = mostRecentSavedEnergy["importedEnergy"]
+                    {
+                        let importedkWH = ((importedEnergy as! Double)/3600000.0)
+                        _cellData.append(NeurioHistoryPartial(key: "Imported Energy", value: importedkWH))
+                    }
+                    
+                    if let exportedEnergy = mostRecentSavedEnergy["exportedEnergy"]
+                    {
+                        let exportedkWh = ((exportedEnergy as! Double)/3600000.0)
+                        _cellData.append(NeurioHistoryPartial(key: "Exported Energy", value: exportedkWh))
+                    }
+                    self.tableView.reloadData()
                 }
-                
-                if let consumptionEnergy = result?["consumptionEnergy"]
-                {
-                    self._cellData.append(NeurioHistoryPartial(key: "Consumption Energy", value: consumptionEnergy))
-                }
-                
-                if let importedEnergy = result?["importedEnergy"]
-                {
-                    self._cellData.append(NeurioHistoryPartial(key: "Imported Energy", value: importedEnergy))
-                }
-                
-                if let exportedEnergy = result?["exportedEnergy"]
-                {
-                    self._cellData.append(NeurioHistoryPartial(key: "Exported Energy", value: exportedEnergy))
-                }
-                
-//                if let generationPower = result?["generationPower"]
-//                {
-//                    self._cellData.append(NeurioHistoryPartial(key: "Generation Power", value: generationPower))
-//                }
-//                
-//                if let consumptionPower = result?["consumptionPower"]
-//                {
-//                    self._cellData.append(NeurioHistoryPartial(key: "Consumption Power", value: consumptionPower))
-//                }
-                
-                self.tableView.reloadData()
-            })
+            }
+            else
+            {
+                self.performSegue(withIdentifier: "showGetSensorVC", sender: self)
+            }
         }
         else
         {
             self.performSegue(withIdentifier: "showGetSensorVC", sender: self)
         }
+
     }
     
     @IBAction func refreshButtonTapped(_ sender: Any) {

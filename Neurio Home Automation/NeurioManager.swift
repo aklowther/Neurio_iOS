@@ -167,7 +167,23 @@ public class NeurioManager : NSObject
         }
     }
     
-    //MARK: 
+    //MARK:
+    
+    public func latestEntryFromLast48Hours(completionHandler: @escaping ReturnDictionary) -> [String: Any]?
+    {
+        if let sensorID = hasValidSensorID()
+        {
+            getTodaysHistory(sensorID: sensorID, completionHandler: completionHandler)
+        }
+        
+        if (_last48Hours.count == 0)
+        {
+            _last48Hours = self.loadLast2DaysOfData()
+        }
+        
+        return _last48Hours.last!
+    }
+    
     public func getTodaysHistory(sensorID: String, completionHandler: @escaping ReturnDictionary) -> Void
     {
         if self.hasValidToken()
@@ -206,7 +222,7 @@ public class NeurioManager : NSObject
         }
     }
     
-    public func getTodaysEnergyHistory(sensorID: String, completionHandler: @escaping ReturnDictionary) -> Void
+    public func getTodaysEnergyHistory(sensorID: String, completionHandler: @escaping ReturnDictionary) -> [String:Any]?
     {
         if self.hasValidToken()
         {
@@ -241,6 +257,13 @@ public class NeurioManager : NSObject
                     }
             }
         }
+        
+        if (_last48Hours.count == 0)
+        {
+            _last48Hours = self.loadLast2DaysOfData()
+        }
+        
+        return _last48Hours.last
     }
     
     //MARK: Private

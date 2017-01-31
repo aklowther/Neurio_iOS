@@ -26,50 +26,55 @@ class InterfaceController: WKInterfaceController
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        if let sensorID : String = neurioManager.hasValidSensorID()
+        if let latestEntry = neurioManager.latestEntryFromLast48Hours(completionHandler: { responseDictionary in
+            if let newEntry = responseDictionary
+            {
+                self.reloadTable(withData: newEntry)
+            }
+        })
         {
-            neurioManager.getTodaysEnergyHistory(sensorID: sensorID, completionHandler: { response in
-                
-                if let validatedResponse = response
-                {
-                    let tableViewRows = self.tableView.numberOfRows
-                    
-                    self.tableView.insertRows(at: NSIndexSet(index: tableViewRows) as IndexSet, withRowType: "EnergyDataRow")
-                    
-                    //                for i in tableViewRows..<self.tableView.numberOfRows
-                    //                {
-                    //                    // 1
-                    //                    let controller = self.tableView.rowController(at: i)
-                    //
-                    //                    // 2
-                    //                    if let controller = controller as? EnergyDataRow
-                    //                    {
-                    //                        let recipe = responseKeys[i - tableViewRows - 1]
-                    //                        controller.keyLabel.setText(recipe.name)
-                    //                        controller.valueLabel.setText("\(recipe.ingredients.count) ingredients")
-                    //                    }
-                    //                }
-                    
-                    var i = 0
-                    for (key, value) in validatedResponse
-                    {
-                        let controller = self.tableView.rowController(at: i)
-                        
-                        if let controller = controller as? EnergyDataRow
-                        {
-                            controller.keyLabel.setText(key)
-                            controller.valueLabel.setText(String(format: "%@", value as! CVarArg))
-                        }
-                        i += 1
-                    }
-                }
-            })
+            self.reloadTable(withData: latestEntry)
         }
+        
+        
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
+    
+    func reloadTable(withData data:[String: Any])
+    {
+        let tableViewRows = self.tableView.numberOfRows
+        
+        self.tableView.insertRows(at: NSIndexSet(index: tableViewRows) as IndexSet, withRowType: "EnergyDataRow")
+        
+//        for i in tableViewRows..<self.tableView.numberOfRows
+//        {
+//            // 1
+//            let controller = self.tableView.rowController(at: i)
+//            
+//            // 2
+//            if let controller = controller as? EnergyDataRow
+//            {
+//                let recipe = responseKeys[i - tableViewRows - 1]
+//                controller.keyLabel.setText(recipe.name)
+//                controller.valueLabel.setText("\(recipe.ingredients.count) ingredients")
+//            }
+//        }
+        
+        var i = 0
+        for (key, value) in data
+        {
+            let controller = self.tableView.rowController(at: i)
+            
+            if let controller = controller as? EnergyDataRow
+            {
+                controller.keyLabel.setText(key)
+                controller.valueLabel.setText(String(format: "%@", value as! CVarArg))
+            }
+            i += 1
+        }
+    }
 }
