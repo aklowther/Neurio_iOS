@@ -41,7 +41,8 @@ class GetSensorViewController: UIViewController, SFSafariViewControllerDelegate,
         {
             if !neurioManager.hasAuthCode()
             {
-                self.present(webView, animated: true, completion: nil)
+//                self.present(webView, animated: true, completion: nil)
+                UIApplication.shared.open(URL(string: neurioManager.getNuerioAuthorizationURL())!, options: [:], completionHandler: nil)
             }
         }
     }
